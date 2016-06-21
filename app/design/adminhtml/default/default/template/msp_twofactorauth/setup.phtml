@@ -1,0 +1,48 @@
+<?php
+/**
+ * IDEALIAGroup srl
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to info@idealiagroup.com so we can send you a copy immediately.
+ *
+ * @category   MSP
+ * @package    MSP_TwoFactorAuth
+ * @copyright  Copyright (c) 2016 IDEALIAGroup srl (http://www.idealiagroup.com)
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+
+/** @var $this MSP_TwoFactorAuth_Block_Setup */
+?>
+<div class="content-header">
+    <table cellspacing="0">
+        <tbody>
+            <tr>
+                <td><h3 class="head-dashboard"><?php echo $this->__('Setup two factor auth') ?></h3></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="a-center">
+    <img src="<?php echo $this->getQrCode() ?>" /><br />
+    <br />
+    <h2><?php echo $this->__('Scan this QR code with your Google Authenticator application') ?></h2>
+    <br />
+    <h3><?php echo $this->__('Type your 6 digits code to confirm') ?></h3>
+    <form method="post" action="<?php echo $this->getPostUrl() ?>">
+        <input type="text" name="token" class="input-text" />
+        <input type="hidden" name="form_key" value="<?php echo Mage::getSingleton('core/session')->getFormKey() ?>" />
+        <button type="submit" class="scalable save"><?php echo $this->__('Confirm') ?></button>
+    </form>
+    <br /><br />
+    <?php if ($this->canDisable()) : ?>
+        <a href="<?php echo $this->getDisableUrl() ?>"><?php echo $this->__('Click here to disable if you activated Two Factor Authentication by mistake') ?></a>
+    <?php endif; ?>
+</div>
