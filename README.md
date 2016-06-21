@@ -4,6 +4,8 @@ MSP_TwoFactorAuth is a Magento 1 module to activate a "two factor authentication
 
 This module is fully compliant with Google Authenticator application for smartphones and easy to set-up.
 
+This module is on **BETA**, we recommend to **test it before using on production**.
+
 ## Setup
 
 - Copy this module on your Magento root
