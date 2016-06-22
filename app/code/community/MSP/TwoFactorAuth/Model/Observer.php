@@ -46,10 +46,13 @@ class MSP_TwoFactorAuth_Model_Observer
 
         if (!Mage::helper('msp_twofactorauth/auth')->getUserSetupComplete()) {
             Mage::app()->getResponse()->setRedirect(Mage::helper('adminhtml')->getUrl('adminhtml/tfa/setup'));
-            return;
+            Mage::app()->getResponse()->sendResponse();
+            exit;
         }
 
         Mage::app()->getResponse()->setRedirect(Mage::helper('adminhtml')->getUrl('adminhtml/tfa/auth'));
+        Mage::app()->getResponse()->sendResponse();
+        exit;
     }
     
 
